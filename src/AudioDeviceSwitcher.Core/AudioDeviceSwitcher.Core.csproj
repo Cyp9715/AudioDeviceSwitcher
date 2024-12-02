@@ -3,6 +3,7 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <TargetFramework>net8.0-windows10.0.18362.0</TargetFramework>
     <PlatformTarget>AnyCPU</PlatformTarget>
+    <NoWarn>CS8618</NoWarn>
     <SupportedOSPlatformVersion>10.0.18362.0</SupportedOSPlatformVersion>
   </PropertyGroup>
 
