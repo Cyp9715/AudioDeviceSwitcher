@@ -9,7 +9,6 @@ public sealed partial class AboutPage : Page
 {
     public AboutPage()
     {
-        Version = Process.GetCurrentProcess().MainModule?.FileVersionInfo?.ProductVersion?.ToString();
         InitializeComponent();
     }
 

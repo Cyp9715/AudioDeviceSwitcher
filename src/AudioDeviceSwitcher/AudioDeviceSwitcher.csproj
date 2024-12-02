@@ -29,7 +29,6 @@
 
   <ItemGroup>
     <Manifest Include="$(ApplicationManifest)" />
-    <AdditionalFiles Include="../../stylecop.json" />
     <ProjectReference Include="..\AudioDeviceSwitcher.Core\AudioDeviceSwitcher.Core.csproj" />
     <None Update="AudioSwitch.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

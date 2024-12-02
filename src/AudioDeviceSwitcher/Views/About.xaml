@@ -1,33 +1,44 @@
-﻿<Page
-    x:Class="AudioDeviceSwitcher.AboutPage"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:AudioDeviceSwitcher"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+﻿<Page x:Class="AudioDeviceSwitcher.AboutPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:AudioDeviceSwitcher"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d">
 
     <Grid Padding="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Spacing="5">
+        <StackPanel Grid.Row="0"
+                    Spacing="5">
             <StackPanel Orientation="Horizontal">
-                <TextBlock FontSize="18" FontWeight="Bold">
+                <TextBlock FontSize="18"
+                           FontWeight="Bold">
                     <Run Text="{x:Bind local:AudioSwitcherState.Title}" />
-                    <Run Text="{x:Bind Version}" />
+                    <Run Text="{x:Bind local:AudioSwitcherState.Version}" />
                 </TextBlock>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" Spacing="5">
-                <TextBlock Text="Repository:" VerticalAlignment="Center" />
-                <HyperlinkButton NavigateUri="{x:Bind local:AudioSwitcherState.Repository}" Content="{x:Bind local:AudioSwitcherState.Repository}" />
+            <StackPanel Orientation="Horizontal"
+                        Spacing="5">
+                <TextBlock Text="Repository(Original):"
+                           VerticalAlignment="Center" />
+                <HyperlinkButton NavigateUri="{x:Bind local:AudioSwitcherState.OriginalRepository}"
+                                 Content="{x:Bind local:AudioSwitcherState.OriginalRepository}" />
             </StackPanel>
-            <StackPanel Orientation="Horizontal" Spacing="5">
-                <TextBlock Text="Discord:" VerticalAlignment="Center" />
-                <HyperlinkButton NavigateUri="{x:Bind local:AudioSwitcherState.Discord}" Content="{x:Bind local:AudioSwitcherState.Discord}" />
+            <StackPanel Orientation="Horizontal"
+                        Spacing="5">
+                <TextBlock Text="Repository(Forked):"
+                           VerticalAlignment="Center" />
+                <HyperlinkButton NavigateUri="{x:Bind local:AudioSwitcherState.ForkedRepository}"
+                                 Content="{x:Bind local:AudioSwitcherState.ForkedRepository}" />
             </StackPanel>
         </StackPanel>
-        <TextBlock Grid.Row="1" Text="Copyright (C) 2021 Jose Torres" FontSize="15" HorizontalAlignment="Center" Padding="10" />
+        <TextBlock Grid.Row="1"
+                   Text="Based on the original work by Jose Torres. Improved and maintained by Cyp."
+                   FontSize="15"
+                   HorizontalAlignment="Center"
+                   Padding="10" />
     </Grid>
 </Page>

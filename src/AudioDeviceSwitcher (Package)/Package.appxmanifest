@@ -10,7 +10,7 @@
   IgnorableNamespaces="desktop uap8 uap5 uap rescap">
 
   <Identity
-    Name="16084JoseTorres.AudioDeviceSwitcher"
+    Name="AudioDeviceSwitcher"
     Publisher="CN=CE98524C-F7AE-43D1-BAA2-86CBC37B8616"
     Version="1.0.0.0" />
 
