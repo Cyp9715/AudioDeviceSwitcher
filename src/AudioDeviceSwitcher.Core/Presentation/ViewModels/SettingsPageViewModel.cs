@@ -23,7 +23,7 @@ public sealed partial class SettingsPageViewModel
         _io = io;
         this.app = app;
         OnInitialize();
-        InitializeCommands();
+        //InitializeCommands();
     }
 
     public async Task LoadAsync()

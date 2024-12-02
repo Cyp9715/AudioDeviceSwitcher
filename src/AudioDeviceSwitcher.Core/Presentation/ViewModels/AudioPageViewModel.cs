@@ -51,7 +51,7 @@ public sealed partial class AudioPageViewModel : IDisposable
         _audioDeviceWatcher = watcher;
         _events = events;
         io = iO;
-        InitializeCommands();
+        //InitializeCommands();
     }
 
     private IEnumerable<AudioDeviceViewModel> SelectedDevices => _selectedDevices.Cast<AudioDeviceViewModel>();
