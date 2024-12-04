@@ -13,6 +13,6 @@ public sealed record AudioSwitcherState
     public bool RunAtStartupMinimized { get; set; } = true;
     public bool RunInBackground { get; set; } = true;
     public bool ShowDisabledDevices { get; set; } = false;
-    public bool SwitchCommunicationDevice { get; set; } = false;
+    public bool SwitchCommunicationDevice { get; set; } = true;
     public bool DarkTheme { get; set; } = true;
 }
