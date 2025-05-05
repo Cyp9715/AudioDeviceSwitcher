@@ -54,8 +54,8 @@ public sealed record Hotkey
                 keys.Add(GetPrettyModifier(mod));
         }
 
-        if (!Modifiers.HasFlag(KeyModifiers.Control) &&
-            !Modifiers.HasFlag(KeyModifiers.Menu))
+        if (Modifiers.HasFlag(KeyModifiers.Control) is false &&
+            Modifiers.HasFlag(KeyModifiers.Menu) is false)
         {
             return string.Empty;
         }
