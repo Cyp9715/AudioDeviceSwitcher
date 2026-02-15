@@ -33,9 +33,9 @@
     <WapProjPath Condition="'$(WapProjPath)'==''">$(MSBuildExtensionsPath)\Microsoft\DesktopBridge\</WapProjPath>
     <PathToXAMLWinRTImplementations>AudioDeviceSwitcher\</PathToXAMLWinRTImplementations>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)' == 'Debug' and '$(WinUISDKReferences)' == ''">
-    <!-- Prevent implicit Microsoft.UniversalCRT.Debug SDK dependency in Debug packaging -->
-    <WinUISDKReferences>false</WinUISDKReferences>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug' and '$(DisableImplicitUCRTReference)' == ''">
+    <!-- Prevent Microsoft.Cpp.VCLibs120Universal.targets from re-adding UCRT Debug SDK -->
+    <DisableImplicitUCRTReference>true</DisableImplicitUCRTReference>
   </PropertyGroup>
   <Import Project="$(WapProjPath)\Microsoft.DesktopBridge.props" />
   <PropertyGroup>
@@ -92,5 +92,10 @@
       <IncludeAssets>build</IncludeAssets>
     </PackageReference>
   </ItemGroup>
+  <Target Name="RemoveMissingUcrtDebugSdkReference" BeforeTargets="ResolveSDKReferences" Condition="'$(Configuration)' == 'Debug'">
+    <ItemGroup>
+      <SDKReference Remove="Microsoft.UniversalCRT.Debug, Version=$(TargetPlatformVersion)" />
+    </ItemGroup>
+  </Target>
   <Import Project="$(WapProjPath)\Microsoft.DesktopBridge.targets" />
 </Project>
