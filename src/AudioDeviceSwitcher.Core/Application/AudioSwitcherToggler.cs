@@ -16,14 +16,18 @@ public sealed class AudioSwitcherToggler
     public async Task ToggleAsync(AudioDeviceClass deviceClass, IEnumerable<string> devices, bool switchCommunicationDevice)
     {
         var availableDevices = await audioManager.GetAllDevicesAsync(deviceClass);
+        var resolvedDeviceIds = devices
+            .Select(device => DeviceReference.TryResolveId(device, availableDevices, out var id) ? id : device)
+            .Distinct()
+            .ToArray();
 
-        if (!devices.Any())
+        if (!resolvedDeviceIds.Any())
             throw new AudioSwitcherException("Please select one or more devices.");
 
         var skipped = new List<string>();
         var defaultAudioDevice = audioManager.GetDefaultAudioId(deviceClass, AudioDeviceRoleType.Default);
 
-        foreach (var deviceId in GetNext(devices.ToArray(), defaultAudioDevice))
+        foreach (var deviceId in GetNext(resolvedDeviceIds, defaultAudioDevice))
         {
             if (string.IsNullOrWhiteSpace(deviceId))
                 continue;
