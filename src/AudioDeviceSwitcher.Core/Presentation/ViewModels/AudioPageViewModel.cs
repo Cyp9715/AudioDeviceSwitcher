@@ -76,7 +76,7 @@ public sealed partial class AudioPageViewModel : IDisposable
             await StartAudioWatcherAsync();
 
         var selectedCommand = Commands.First();
-        SelectDevices(Devices.Where(x => selectedCommand.DeviceIds.Contains(x.Id)));
+        SelectDevices(Devices.Where(x => IsDeviceSelected(selectedCommand, x)));
         SelectedCommand = selectedCommand;
         --IsExecuting;
     }
@@ -94,7 +94,7 @@ public sealed partial class AudioPageViewModel : IDisposable
     public void SaveSelectedCommand()
     {
         var command = SelectedCommand;
-        command.DeviceIds = SelectedDevices.Select(x => x.Id).ToArray();
+        command.DeviceIds = SelectedDevices.Select(x => DeviceReference.Encode(x.Id, x.FullName)).ToArray();
         _audioSwitcher.SaveCommand(ToModel(command));
     }
 
@@ -220,7 +220,7 @@ public sealed partial class AudioPageViewModel : IDisposable
         {
             Action = CommandType.Set,
             Hotkey = cmd.Hotkey,
-            Devices = SelectedDevices.Select(x => x.Id).ToArray(),
+            Devices = SelectedDevices.Select(x => DeviceReference.Encode(x.Id, x.FullName)).ToArray(),
         };
     }
 
@@ -300,7 +300,7 @@ public sealed partial class AudioPageViewModel : IDisposable
 
     public async Task LoadCommandAsync(AudioCommandViewModel command)
     {
-        SelectDevices(Devices.Where(x => command.DeviceIds.Contains(x.Id)));
+        SelectDevices(Devices.Where(x => IsDeviceSelected(command, x)));
         await TrySetHotkeyAsync(command.Hotkey, false);
         Command = GetCmd();
     }
@@ -359,8 +359,13 @@ public sealed partial class AudioPageViewModel : IDisposable
 
         bool Valid(AudioDeviceViewModel model)
         {
-            return _audioSwitcher.ShowDisabledDevices || model.IsEnabled || SelectedCommand.DeviceIds.Contains(model.Id);
+            return _audioSwitcher.ShowDisabledDevices || model.IsEnabled || IsDeviceSelected(SelectedCommand, model);
         }
+    }
+
+    private static bool IsDeviceSelected(AudioCommandViewModel command, AudioDeviceViewModel device)
+    {
+        return command.DeviceIds.Any(reference => DeviceReference.IsMatch(reference, new(device.Id, device.FullName)));
     }
 
     private void AudioDeviceWatcher_Events(object @event)
