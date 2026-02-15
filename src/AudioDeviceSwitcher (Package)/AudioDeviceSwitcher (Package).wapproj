@@ -33,6 +33,10 @@
     <WapProjPath Condition="'$(WapProjPath)'==''">$(MSBuildExtensionsPath)\Microsoft\DesktopBridge\</WapProjPath>
     <PathToXAMLWinRTImplementations>AudioDeviceSwitcher\</PathToXAMLWinRTImplementations>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug' and '$(WinUISDKReferences)' == ''">
+    <!-- Prevent implicit Microsoft.UniversalCRT.Debug SDK dependency in Debug packaging -->
+    <WinUISDKReferences>false</WinUISDKReferences>
+  </PropertyGroup>
   <Import Project="$(WapProjPath)\Microsoft.DesktopBridge.props" />
   <PropertyGroup>
     <ProjectGuid>5f2bba54-26b8-4b2f-ab0d-c7edda1a7e58</ProjectGuid>
