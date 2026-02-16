@@ -1,10 +1,10 @@
 ﻿// Copyright (c) 2021 Jose Torres. All rights reserved. Licensed under the Apache License, Version 2.0. See LICENSE.md file in the project root for full license information.
 
-namespace AudioDeviceSwitcher;
+namespace SoundFlip;
 
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using AudioDeviceSwitcher.Interop.UI;
+using SoundFlip.Interop.UI;
 using Microsoft.UI.Xaml;
 using WinRT.Interop;
 using static PInvoke.User32;

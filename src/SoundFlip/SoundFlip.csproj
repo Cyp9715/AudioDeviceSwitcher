@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>AudioDeviceSwitcher</RootNamespace>
+    <RootNamespace>SoundFlip</RootNamespace>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <RuntimeIdentifiers>win-x64;win-x86;win-arm64</RuntimeIdentifiers>
     <RuntimeIdentifier>win-$(Platform)</RuntimeIdentifier>
@@ -29,7 +29,7 @@
 
   <ItemGroup>
     <Manifest Include="$(ApplicationManifest)" />
-    <ProjectReference Include="..\AudioDeviceSwitcher.Core\AudioDeviceSwitcher.Core.csproj" />
+    <ProjectReference Include="..\SoundFlip.Core\SoundFlip.Core.csproj" />
     <None Update="AudioSwitch.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

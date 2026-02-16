@@ -52,14 +52,14 @@ jobs:
       - name: Upload installer
         uses: actions/upload-artifact@v2
         with:
-          name: AudioDeviceSwitcher ${{ env.NBGV_version }}
-          path: AppPackages/AudioDeviceSwitcher (Package)_${{ env.NBGV_SimpleVersion }}.0_Test/*.msixbundle
+          name: SoundFlip ${{ env.NBGV_version }}
+          path: AppPackages/SoundFlip (Package)_${{ env.NBGV_SimpleVersion }}.0_Test/*.msixbundle
 
       - name: Upload certificate
         uses: actions/upload-artifact@v2
         with:
           name: Certificate
-          path: AppPackages/AudioDeviceSwitcher (Package)_${{ env.NBGV_SimpleVersion }}.0_Test/*.cer
+          path: AppPackages/SoundFlip (Package)_${{ env.NBGV_SimpleVersion }}.0_Test/*.cer
           
       - name: Remove _Test folder
         run: Remove-Item AppPackages/*_Test -Recurse

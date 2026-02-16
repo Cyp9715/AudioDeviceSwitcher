@@ -187,8 +187,8 @@ publish/
 # Note: Comment the next line if you want to checkin your web deploy settings,
 # but database connection strings (with potential passwords) will be unencrypted
 *.pubxml
-!src/AudioDeviceSwitcher/Properties/PublishProfiles/win10-x64.pubxml
-!src/AudioDeviceSwitcher/Properties/PublishProfiles/win10-arm64.pubxml
+!src/SoundFlip/Properties/PublishProfiles/win10-x64.pubxml
+!src/SoundFlip/Properties/PublishProfiles/win10-arm64.pubxml
 *.publishproj
 
 # Microsoft Azure Web App publish settings. Comment the next line if you want to

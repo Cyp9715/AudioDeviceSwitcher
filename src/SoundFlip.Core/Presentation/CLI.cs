@@ -1,8 +1,8 @@
 ﻿// Copyright (c) 2021 Jose Torres. All rights reserved. Licensed under the Apache License, Version 2.0. See LICENSE.md file in the project root for full license information.
 
-namespace AudioDeviceSwitcher;
+namespace SoundFlip;
 
-using AudioDeviceSwitcher.Core.Application;
+using SoundFlip.Core.Application;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -86,7 +86,7 @@ public sealed class CLI
         if (!devices.Any())
             return string.Empty;
 
-        return $"AudioDeviceSwitcher {BuildCommandArgs(deviceClass, devices)}";
+        return $"SoundFlip {BuildCommandArgs(deviceClass, devices)}";
     }
 
     public static string BuildCommandArgs(AudioDeviceClass deviceClass, AudioDevice[] devices)

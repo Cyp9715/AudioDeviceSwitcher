@@ -1,6 +1,6 @@
 ﻿// Copyright (c) 2021 Jose Torres. All rights reserved. Licensed under the Apache License, Version 2.0. See LICENSE.md file in the project root for full license information.
 
-namespace AudioDeviceSwitcher;
+namespace SoundFlip;
 
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
@@ -49,7 +49,7 @@ public sealed partial class AudioPage : Page, IDisposable
 
     private async void HotKey_ProcessKeyboardAccelerators(UIElement sender, ProcessKeyboardAcceleratorEventArgs args)
     {
-        if (AudioDeviceSwitcher.Hotkey.Validate(args.Modifiers.ToKeyModifiers(), args.Key.ToKey()))
+        if (SoundFlip.Hotkey.Validate(args.Modifiers.ToKeyModifiers(), args.Key.ToKey()))
             await ViewModel.TrySetHotkeyAsync(new(args.Modifiers.ToKeyModifiers(), args.Key.ToKey()));
 
         args.Handled = true;

@@ -1,6 +1,6 @@
 ﻿// Copyright (c) 2021 Jose Torres. All rights reserved. Licensed under the Apache License, Version 2.0. See LICENSE.md file in the project root for full license information.
 
-namespace AudioDeviceSwitcher;
+namespace SoundFlip;
 
 using System;
 using System.Linq;
@@ -14,7 +14,7 @@ using System.Reflection.Metadata.Ecma335;
 
 public sealed partial class App : Application, IApp
 {
-    public const string Id = "JoseTorres:AudioDeviceSwitcher";
+    public const string Id = "JoseTorres:SoundFlip";
     private static Kernel32.SafeObjectHandle? _mutex;
     private static MainWindow? _window;
 

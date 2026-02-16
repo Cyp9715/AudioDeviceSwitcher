@@ -1,12 +1,12 @@
 ﻿// Copyright (c) 2021 Jose Torres. All rights reserved. Licensed under the Apache License, Version 2.0. See LICENSE.md file in the project root for full license information.
 
-namespace AudioDeviceSwitcher;
+namespace SoundFlip;
 
 public sealed record AudioSwitcherState
 {
-    public static string OriginalRepository { get; } = "https://github.com/josetr/AudioDeviceSwitcher";
-    public static string ForkedRepository { get; } = "https://github.com/Cyp9715/AudioDeviceSwitcher";
-    public static string Title { get; } = "Audio Device Switcher";
+    public static string OriginalRepository { get; } = "https://github.com/josetr/SoundFlip";
+    public static string ForkedRepository { get; } = "https://github.com/Cyp9715/SoundFlip";
+    public static string Title { get; } = "SoundFlip";
     public static string Version { get; } = "1.0.1";
     public List<Command> Commands { get; set; } = new();
     public bool RunAtStartup { get; set; } = true;

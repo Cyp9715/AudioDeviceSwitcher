@@ -2,7 +2,7 @@
 #pragma warning disable SA1201 // Elements should appear in the correct order
 #pragma warning disable SA1310 // Field names should not contain underscore
 
-namespace AudioDeviceSwitcher.Interop;
+namespace SoundFlip.Interop;
 
 using System.Runtime.InteropServices;
 

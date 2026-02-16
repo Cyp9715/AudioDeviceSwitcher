@@ -3,7 +3,7 @@
 #pragma warning disable SA1307 // Accessible fields should begin with upper-case letter
 #pragma warning disable SA1201 // Elements should appear in the correct order
 
-namespace AudioDeviceSwitcher.Interop;
+namespace SoundFlip.Interop;
 
 using System.Runtime.InteropServices;
 

@@ -16,9 +16,9 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <Copyright>© 2021 Jose Torres. All rights reserved.</Copyright>
+    <Copyright>(c) 2021 Jose Torres. All rights reserved.</Copyright>
     <Authors>Jose Torres</Authors>
-    <Description>Audio Device Switcher is a Windows 10 app that makes it easy to quickly switch your default audio device.</Description>
+    <Description>SoundFlip is a Windows 10 app that makes it easy to quickly switch your default audio device.</Description>
     <Version>$(NBGV_Version)</Version>
     <AssemblyVersion>$(NBGV_AssemblyVersion)</AssemblyVersion>
     <AssemblyFileVersion>$(NBGV_AssemblyFileVersion)</AssemblyFileVersion>

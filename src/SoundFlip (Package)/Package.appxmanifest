@@ -10,12 +10,12 @@
   IgnorableNamespaces="desktop uap8 uap5 uap rescap">
 
   <Identity
-    Name="AudioDeviceSwitcher"
+    Name="SoundFlip"
     Publisher="CN=CE98524C-F7AE-43D1-BAA2-86CBC37B8616"
     Version="1.0.1.0" />
 
   <Properties>
-    <DisplayName>Audio Device Switcher</DisplayName>
+    <DisplayName>SoundFlip</DisplayName>
     <PublisherDisplayName>Cyp</PublisherDisplayName>
     <Logo>Images\StoreLogo.png</Logo>
   </Properties>
@@ -34,8 +34,8 @@
       Executable="$targetnametoken$.exe"
       EntryPoint="$targetentrypoint$">
       <uap:VisualElements
-        DisplayName="Audio Device Switcher"
-        Description="AudioDeviceSwitcher makes it easy to switch the default audio device used for both playback and recording. It supports custom hotkeys and also provides commands to easily interact with other software."
+        DisplayName="SoundFlip"
+        Description="SoundFlip makes it easy to switch the default audio device used for both playback and recording. It supports custom hotkeys and also provides commands to easily interact with other software."
         BackgroundColor="transparent"
         Square150x150Logo="Images\Square150x150Logo.png"
         Square44x44Logo="Images\Square44x44Logo.png">
@@ -45,20 +45,20 @@
       <Extensions>
         <uap5:Extension
           Category="windows.appExecutionAlias"
-          Executable="AudioDeviceSwitcher\AudioDeviceSwitcher.exe"
+          Executable="SoundFlip\SoundFlip.exe"
           EntryPoint="Windows.FullTrustApplication">
           <uap5:AppExecutionAlias>
-            <uap8:ExecutionAlias Alias="AudioDeviceSwitcher.exe" />
+            <uap8:ExecutionAlias Alias="SoundFlip.exe" />
           </uap5:AppExecutionAlias>
         </uap5:Extension>
         <desktop:Extension
           Category="windows.startupTask"
-          Executable="AudioDeviceSwitcher\AudioDeviceSwitcher.exe"
+          Executable="SoundFlip\SoundFlip.exe"
           EntryPoint="Windows.FullTrustApplication">
           <desktop:StartupTask
             TaskId="Startup"
             Enabled="true"
-            DisplayName="AudioDeviceSwitcher" />
+            DisplayName="SoundFlip" />
         </desktop:Extension>
       </Extensions>
     </Application>

@@ -17,18 +17,18 @@
     <File Path="stylecop.json" />
     <File Path="version.json" />
   </Folder>
-  <Project Path="src/AudioDeviceSwitcher (Package)/AudioDeviceSwitcher (Package).wapproj" Type="c7167f0d-bc9f-4e6e-afe1-012c56b48db5">
+  <Project Path="src/SoundFlip (Package)/SoundFlip (Package).wapproj" Type="c7167f0d-bc9f-4e6e-afe1-012c56b48db5">
     <Platform Solution="Debug|Any CPU" Project="x64" />
     <Platform Solution="Release|Any CPU" Project="x86" />
     <Deploy />
   </Project>
-  <Project Path="src/AudioDeviceSwitcher.Core/AudioDeviceSwitcher.Core.csproj">
+  <Project Path="src/SoundFlip.Core/SoundFlip.Core.csproj">
     <Platform Solution="*|Any CPU" Project="x64" />
     <Platform Solution="*|arm64" Project="arm64" />
     <Platform Solution="*|x64" Project="x64" />
     <Platform Solution="*|x86" Project="x86" />
   </Project>
-  <Project Path="src/AudioDeviceSwitcher/AudioDeviceSwitcher.csproj">
+  <Project Path="src/SoundFlip/SoundFlip.csproj">
     <Platform Solution="*|arm64" Project="arm64" />
     <Platform Solution="*|x64" Project="x64" />
     <Platform Solution="*|x86" Project="x86" />

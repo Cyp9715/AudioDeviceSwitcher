@@ -31,7 +31,7 @@
   </ItemGroup>
   <PropertyGroup>
     <WapProjPath Condition="'$(WapProjPath)'==''">$(MSBuildExtensionsPath)\Microsoft\DesktopBridge\</WapProjPath>
-    <PathToXAMLWinRTImplementations>AudioDeviceSwitcher\</PathToXAMLWinRTImplementations>
+    <PathToXAMLWinRTImplementations>SoundFlip\</PathToXAMLWinRTImplementations>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug' and '$(DisableImplicitUCRTReference)' == ''">
     <!-- Prevent Microsoft.Cpp.VCLibs120Universal.targets from re-adding UCRT Debug SDK -->
@@ -42,14 +42,14 @@
     <ProjectGuid>5f2bba54-26b8-4b2f-ab0d-c7edda1a7e58</ProjectGuid>
     <AssetTargetFallback>net10.0-windows$(TargetPlatformVersion);$(AssetTargetFallback)</AssetTargetFallback>
     <DefaultLanguage>en-US</DefaultLanguage>
-    <EntryPointProjectUniqueName>..\AudioDeviceSwitcher\AudioDeviceSwitcher.csproj</EntryPointProjectUniqueName>
+    <EntryPointProjectUniqueName>..\SoundFlip\SoundFlip.csproj</EntryPointProjectUniqueName>
     <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
     <HoursBetweenUpdateChecks>24</HoursBetweenUpdateChecks>
     <AppxSymbolPackageEnabled>True</AppxSymbolPackageEnabled>
     <AppxPackageSigningEnabled>False</AppxPackageSigningEnabled>
     <AppxPackageIncludePrivateSymbols>True</AppxPackageIncludePrivateSymbols>
     <AppxBundlePlatforms>x64|arm64</AppxBundlePlatforms>
-    <PackageCertificateKeyFile>..\..\AudioDeviceSwitcher.pfx</PackageCertificateKeyFile>
+    <PackageCertificateKeyFile>..\..\SoundFlip.pfx</PackageCertificateKeyFile>
     <AppxPackageDir>..\..\AppPackages</AppxPackageDir>
     <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
@@ -85,7 +85,7 @@
     <Content Include="Images\StoreLogo.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AudioDeviceSwitcher\AudioDeviceSwitcher.csproj">
+    <ProjectReference Include="..\SoundFlip\SoundFlip.csproj">
       <SkipGetTargetFrameworkProperties>True</SkipGetTargetFrameworkProperties>
       <PublishProfile>Properties\PublishProfiles\win10-$(Platform).pubxml</PublishProfile>
     </ProjectReference>
