@@ -2,7 +2,7 @@
 
 This repository is a fork of the original [josetr/AudioDeviceSwitcher](https://github.com/josetr/AudioDeviceSwitcher), focused on practical reliability and compatibility improvements for daily use.
 
-![SoundFlip](SoundFlip.png)
+<img src="SoundFlip.png" alt="SoundFlip" width="300" height="300" />
 
 ## Why this fork exists
 
@@ -23,14 +23,6 @@ Implemented changes:
 - During load/switch, references are resolved back to current device IDs using fallback matching rules.
 - Device selection restoration now uses resilient matching logic.
 
-Related commits:
-- `bba2605` Update to .NET 10 and add resilient device references
-
-Key code areas:
-- `src/SoundFlip.Core/Domain/DeviceReference.cs`
-- `src/SoundFlip.Core/Application/AudioSwitcherToggler.cs`
-- `src/SoundFlip.Core/Presentation/ViewModels/AudioPageViewModel.cs`
-
 ### 2) Runtime and dependency modernization (compatibility improvements)
 
 Problem:
@@ -40,11 +32,6 @@ Implemented changes:
 - Upgraded app/runtime targets to modern .NET (`net10.0-windows10.0.18362.0`).
 - Updated core packages (including Windows App SDK line) to current maintained versions.
 - Applied packaging project adjustments to avoid debug SDK resolution issues on newer build environments.
-
-Related commits:
-- `bba2605` Update to .NET 10 and add resilient device references
-- `0ec520a` / `549a518` Packaging project compatibility fixes
-- `e424410` Solution/metadata update for current toolchain
 
 ## Notes
 
