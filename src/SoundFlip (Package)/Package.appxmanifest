@@ -12,7 +12,7 @@
   <Identity
     Name="SoundFlip"
     Publisher="CN=CE98524C-F7AE-43D1-BAA2-86CBC37B8616"
-    Version="1.0.1.0" />
+    Version="1.0.2.0" />
 
   <Properties>
     <DisplayName>SoundFlip</DisplayName>
