@@ -5,7 +5,7 @@
     <OutputPath>$(SolutionDir)bin\$(MSBuildProjectName)\$(Configuration)\</OutputPath>
     <LangVersion>latest</LangVersion>
     <Platforms>x64;x86;arm64</Platforms>
-    <WinPlatformVersion>10.0.18362.0</WinPlatformVersion>
+    <WinPlatformVersion>10.0.26100.0</WinPlatformVersion>
     <TargetFramework>net10.0-windows$(WinPlatformVersion)</TargetFramework>
     <TargetPlatformVersion>$(WinPlatformVersion)</TargetPlatformVersion>
     <TargetPlatformMinVersion>$(WinPlatformVersion)</TargetPlatformMinVersion>
@@ -16,9 +16,9 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <Copyright>(c) 2021 Jose Torres. All rights reserved.</Copyright>
-    <Authors>Jose Torres</Authors>
-    <Description>SoundFlip is a Windows 10 app that makes it easy to quickly switch your default audio device.</Description>
+    <Copyright>(c) 2021 Jose Torres. (c) 2024-2026 Cyp.</Copyright>
+    <Authors>Jose Torres; Cyp</Authors>
+    <Description>SoundFlip is a Windows app that makes it easy to quickly switch your default audio device.</Description>
     <Version>$(NBGV_Version)</Version>
     <AssemblyVersion>$(NBGV_AssemblyVersion)</AssemblyVersion>
     <AssemblyFileVersion>$(NBGV_AssemblyFileVersion)</AssemblyFileVersion>

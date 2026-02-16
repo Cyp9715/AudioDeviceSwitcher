@@ -8,34 +8,23 @@ This repository is a fork of the original [josetr/AudioDeviceSwitcher](https://g
 
 ## Why this fork exists
 
-I forked the original project for two concrete pain points:
-
-1. Windows/driver updates could change audio endpoint IDs, which forced command/device re-registration.
-2. Older runtime/package combinations caused compatibility and maintenance friction on newer toolchains.
+- Windows/driver updates can change audio endpoint IDs, which caused repeated command/device re-registration.
+- Older runtime/package combinations created compatibility and maintenance issues on modern toolchains.
 
 ## What changed in this fork
 
 ### 1) Resilient device reference handling (fixes repeated re-registration)
 
-Problem:
-- Commands were tied to raw device IDs, and those IDs can change after Windows updates, driver updates, or audio stack resets.
-
-Implemented changes:
-- Added a resilient reference model that stores device identity as encoded metadata (`name + ID hash`) instead of relying only on raw IDs.
-- During load/switch, references are resolved back to current device IDs using fallback matching rules.
-- Device selection restoration now uses resilient matching logic.
+- Commands now use resilient device references (`name + ID hash`) instead of only raw IDs.
+- During load/switch, references are resolved to current device IDs with fallback matching.
+- Existing command mappings survive endpoint ID churn more reliably.
 
 ### 2) Runtime and dependency modernization (compatibility improvements)
 
-Problem:
-- Legacy dependency/runtime combinations were increasingly brittle in newer Visual Studio/Windows SDK environments.
-
-Implemented changes:
-- Upgraded app/runtime targets to modern .NET (`net10.0-windows10.0.18362.0`).
-- Updated core packages (including Windows App SDK line) to current maintained versions.
-- Applied packaging project adjustments to avoid debug SDK resolution issues on newer build environments.
+- Upgraded target framework/runtime to `net10.0-windows10.0.26100.0` (Windows 11 24H2+).
+- Updated core dependencies (including Windows App SDK) to maintained versions.
+- Applied packaging/build adjustments for better compatibility in newer environments.
 
 ## Notes
 
-- This fork keeps the original project's intent and workflow, while prioritizing stability after OS/device changes and smoother build/deploy behavior on modern environments.
-- Original repository and credit remain with Jose Torres: [josetr/AudioDeviceSwitcher](https://github.com/josetr/AudioDeviceSwitcher).
+- Original project and credit: [josetr/AudioDeviceSwitcher](https://github.com/josetr/AudioDeviceSwitcher).
