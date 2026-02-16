@@ -2,7 +2,9 @@
 
 This repository is a fork of the original [josetr/AudioDeviceSwitcher](https://github.com/josetr/AudioDeviceSwitcher), focused on practical reliability and compatibility improvements for daily use.
 
-<img src="SoundFlip.png" alt="SoundFlip" width="300" height="300" />
+<p align="center">
+  <img src="SoundFlip.png" alt="SoundFlip" width="300" height="300" />
+</p>
 
 ## Why this fork exists
 
