@@ -7,7 +7,7 @@ public sealed record AudioSwitcherState
     public static string OriginalRepository { get; } = "https://github.com/josetr/AudioDeviceSwitcher";
     public static string ForkedRepository { get; } = "https://github.com/Cyp9715/AudioDeviceSwitcher";
     public static string Title { get; } = "Audio Device Switcher";
-    public static string Version { get; } = "1.0.0";
+    public static string Version { get; } = "1.0.1";
     public List<Command> Commands { get; set; } = new();
     public bool RunAtStartup { get; set; } = true;
     public bool RunAtStartupMinimized { get; set; } = true;

@@ -12,7 +12,7 @@
   <Identity
     Name="AudioDeviceSwitcher"
     Publisher="CN=CE98524C-F7AE-43D1-BAA2-86CBC37B8616"
-    Version="1.0.0.0" />
+    Version="1.0.1.0" />
 
   <Properties>
     <DisplayName>Audio Device Switcher</DisplayName>

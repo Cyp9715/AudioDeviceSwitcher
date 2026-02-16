@@ -10,12 +10,13 @@ if (!$platform) {
 
 $root = $PSScriptRoot
 $projectName = 'AudioDeviceSwitcher'
+$solutionPath = "$root/$projectName.slnx"
 $package_dir = "$root/src/$projectName (Package)"
 $certificatePath = "$root/$projectName.pfx"
 $sign = (Test-Path $certificatePath)
 
 function Create-Package {
-	msbuild -v:m -nologo `
+	msbuild $solutionPath -v:m -nologo `
 	-p:Configuration=$configuration `
 	-p:Platform=$platform `
 	-p:AppxPackageSigningEnabled=$sign `
@@ -58,7 +59,7 @@ function Set-Package-Version {
 }
 
 function Restore {
-	msbuild -v:m -nologo -p:Configuration=$configuration -p:Platform=$platform -t:restore
+	msbuild $solutionPath -v:m -nologo -p:Configuration=$configuration -p:Platform=$platform -t:restore
 }
 
 function Test {
