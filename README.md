@@ -1,30 +1,22 @@
 # SoundFlip
 
-This repository is a fork of the original [josetr/AudioDeviceSwitcher](https://github.com/josetr/AudioDeviceSwitcher), focused on practical reliability and compatibility improvements for daily use.
+SoundFlip is a fork of the original [josetr/AudioDeviceSwitcher](https://github.com/josetr/AudioDeviceSwitcher).
+
+The original Audio Device Switcher by Jose Torres is a great project and works very well for most users. This fork exists with full respect for that work. I created it to address a few bugs and environment-specific issues I encountered during daily use, while keeping the original workflow and idea intact.
 
 <p align="center">
   <img src="SoundFlip.png" alt="SoundFlip" width="300" height="300" />
 </p>
 
-## Why this fork exists
+## What this program does
 
-- Windows/driver updates can change audio endpoint IDs, which caused repeated command/device re-registration.
-- Older runtime/package combinations created compatibility and maintenance issues on modern toolchains.
+SoundFlip is a Windows utility for quickly switching the system default audio devices for both playback and recording.
 
-## What changed in this fork
+- Hotkey-based switching: assign a shortcut and cycle through selected output devices (speakers, headset, interface).
+- Microphone routing support: manage recording devices with their own commands and hotkeys.
+- Communication device support: switch the Windows Default Communication Device together with your playback/recording profile.
+- Background/tray workflow: keep it running in the tray and switch devices instantly without reopening settings.
+- Startup support: run automatically with Windows for always-available switching.
+- Command integration: generate commands that can be used in external macro/key-mapping tools.
 
-### 1) Resilient device reference handling (fixes repeated re-registration)
-
-- Commands now use resilient device references (`name + ID hash`) instead of only raw IDs.
-- During load/switch, references are resolved to current device IDs with fallback matching.
-- Existing command mappings survive endpoint ID churn more reliably.
-
-### 2) Runtime and dependency modernization (compatibility improvements)
-
-- Upgraded target framework/runtime to `net10.0-windows10.0.26100.0` (Windows 11 24H2+).
-- Updated core dependencies (including Windows App SDK) to maintained versions.
-- Applied packaging/build adjustments for better compatibility in newer environments.
-
-## Notes
-
-- Original project and credit: [josetr/AudioDeviceSwitcher](https://github.com/josetr/AudioDeviceSwitcher).
+This is especially useful when moving between gaming, calls, streaming, and work setups where audio output/input devices need to change frequently, and it is particularly helpful for dynamically switching microphone and headset setups in Discord.
