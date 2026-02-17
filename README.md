@@ -5,7 +5,7 @@ SoundFlip is a fork of the original [josetr/AudioDeviceSwitcher](https://github.
 The original `Audio Device Switcher` by `Jose Torres` is a great project and works very well for most users. This fork exists with full respect for that work. I created it to address a few bugs and environment-specific issues I encountered during daily use, while keeping the original workflow and idea intact.
 
 <p align="center">
-  <img src="SoundFlip.png" alt="SoundFlip" width="300" height="300" />
+  <img src="src/SoundFlip%20(Package)/Images/SoundFlipSource.png" alt="SoundFlip" width="300" height="300" />
 </p>
 
 ## What this program does
