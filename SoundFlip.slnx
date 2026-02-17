@@ -15,7 +15,6 @@
     <File Path="LICENSE.txt" />
     <File Path="README.md" />
     <File Path="stylecop.json" />
-    <File Path="version.json" />
   </Folder>
   <Project Path="src/SoundFlip (Package)/SoundFlip (Package).wapproj" Type="c7167f0d-bc9f-4e6e-afe1-012c56b48db5">
     <Platform Solution="Debug|Any CPU" Project="x64" />
