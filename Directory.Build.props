@@ -3,6 +3,7 @@
     <SolutionDir>$(MSBuildThisFileDirectory)</SolutionDir>
     <BaseIntermediateOutputPath>$(SolutionDir)obj\$(MSBuildProjectName)\</BaseIntermediateOutputPath>
     <OutputPath>$(SolutionDir)bin\$(MSBuildProjectName)\$(Configuration)\</OutputPath>
+    <DefaultItemExcludes>$(DefaultItemExcludes);$(MSBuildProjectDirectory)\obj\**;$(MSBuildProjectDirectory)\bin\**</DefaultItemExcludes>
     <LangVersion>latest</LangVersion>
     <Platforms>x64;x86;arm64</Platforms>
     <WinPlatformVersion>10.0.26100.0</WinPlatformVersion>
