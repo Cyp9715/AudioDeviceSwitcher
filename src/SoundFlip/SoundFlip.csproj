@@ -4,10 +4,23 @@
     <RootNamespace>SoundFlip</RootNamespace>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <RuntimeIdentifiers>win-x64;win-x86;win-arm64</RuntimeIdentifiers>
-    <RuntimeIdentifier>win-$(Platform)</RuntimeIdentifier>
+    <RuntimeIdentifier Condition="'$(Platform)' == '' or '$(Platform)' == 'AnyCPU' or '$(Platform)' == 'Any CPU'">win-x64</RuntimeIdentifier>
+    <RuntimeIdentifier Condition="'$(Platform)' != '' and '$(Platform)' != 'AnyCPU' and '$(Platform)' != 'Any CPU'">win-$(Platform)</RuntimeIdentifier>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <NoWarn>CS8618</NoWarn>
     <UseWinUI>true</UseWinUI>
+    <WindowsPackageType>MSIX</WindowsPackageType>
+    <EnableMsixTooling>true</EnableMsixTooling>
+    <AppxManifest>Package.appxmanifest</AppxManifest>
+    <AppxPackageSigningEnabled>false</AppxPackageSigningEnabled>
+    <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
+    <AppxSymbolPackageEnabled>true</AppxSymbolPackageEnabled>
+    <AppxPackageIncludePrivateSymbols>true</AppxPackageIncludePrivateSymbols>
+    <PackageCertificateKeyFile>..\..\SoundFlip.pfx</PackageCertificateKeyFile>
+    <AppxPackageDir>..\..\AppPackages\</AppxPackageDir>
+    <GenerateAppInstallerFile>false</GenerateAppInstallerFile>
+    <AppxAutoIncrementPackageRevision>true</AppxAutoIncrementPackageRevision>
+    <GenerateTestArtifacts>true</GenerateTestArtifacts>
     <!-- https://github.com/microsoft/CsWinRT/issues/373 -->
     <PublishSingleFile Condition="'$(AppPublishSingleFile)' == 'true'">true</PublishSingleFile>
     <PublishTrimmed>false</PublishTrimmed>
@@ -30,6 +43,9 @@
   <ItemGroup>
     <Manifest Include="$(ApplicationManifest)" />
     <ProjectReference Include="..\SoundFlip.Core\SoundFlip.Core.csproj" />
+    <None Update="Images\**\*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="AudioSwitch.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

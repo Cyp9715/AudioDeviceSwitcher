@@ -15,11 +15,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          fetch-depth: '0'
- 
+          fetch-depth: "0"
+
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.0.2
-         
+
       - uses: GuillaumeFalourd/setup-windows10-sdk-action@v1
         with:
           sdk-version: 18362
@@ -28,7 +28,7 @@ jobs:
         env:
           CERTIFICATE: ${{ secrets.CERTIFICATE }}
         run: ./build create-certificate
-        
+
       - name: Generate version
         uses: aarnott/nbgv@master
         with:
@@ -36,7 +36,7 @@ jobs:
 
       - name: Write version
         run: ./build set-package-version
-        
+
       - name: Install Audio Devices
         run: ./build install-audio-devices
 
@@ -53,14 +53,16 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: SoundFlip ${{ env.NBGV_version }}
-          path: AppPackages/SoundFlip (Package)_${{ env.NBGV_SimpleVersion }}.0_Test/*.msixbundle
+          path: |
+            AppPackages/**/*.msix
+            AppPackages/**/*.msixbundle
 
       - name: Upload certificate
         uses: actions/upload-artifact@v2
         with:
           name: Certificate
-          path: AppPackages/SoundFlip (Package)_${{ env.NBGV_SimpleVersion }}.0_Test/*.cer
-          
+          path: AppPackages/**/*.cer
+
       - name: Remove _Test folder
         run: Remove-Item AppPackages/*_Test -Recurse
 
@@ -68,7 +70,10 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: Upload
-          path: AppPackages/*.msixupload
+          path: |
+            AppPackages/**/*.msixupload
+            AppPackages/**/*.msixbundle
+            AppPackages/**/*.msix
 
       - name: Publish to Windows Store
         uses: isaacrlevin/windows-store-action@1.0
