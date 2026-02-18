@@ -11,20 +11,18 @@ if (!$platform) {
 $root = $PSScriptRoot
 $projectName = 'SoundFlip'
 $solutionPath = "$root/$projectName.slnx"
-$projectPath = "$root/src/$projectName/$projectName.csproj"
-$package_dir = "$root/src/$projectName"
+$package_dir = "$root/src/$projectName (Package)"
 $certificatePath = "$root/$projectName.pfx"
 $sign = (Test-Path $certificatePath)
 
 function Create-Package {
-	msbuild $projectPath -v:m -nologo `
-		-p:Configuration=$configuration `
-		-p:Platform=$platform `
-		-p:GenerateAppxPackageOnBuild=true `
-		-p:AppxBundle=Always `
-		-p:AppxPackageSigningEnabled=$sign `
-		-p:AppxBundlePlatforms=$platform `
-		-p:UapAppxPackageBuildMode=StoreUpload
+	msbuild $solutionPath -v:m -nologo `
+	-p:Configuration=$configuration `
+	-p:Platform=$platform `
+	-p:AppxPackageSigningEnabled=$sign `
+	-p:AppxBundlePlatforms=$platform `
+	-p:AppPublishSingleFile=true `
+	-p:UapAppxPackageBuildMode=StoreUpload
 }
 
 function Install-Audio-Devices {
