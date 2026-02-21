@@ -24,7 +24,6 @@ internal sealed class WinMenu
 
     public void Track()
     {
-        PUser32.SetForegroundWindow(hwnd);
         var menu = User32.CreatePopupMenu();
 
         for (var i = 0; i < options.Count; ++i)

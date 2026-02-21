@@ -74,6 +74,7 @@ public sealed partial class MainWindow : DesktopWindow
         {
             case PInvoke.User32.WindowMessage.WM_LBUTTONDBLCLK:
                 Restore();
+                PInvoke.User32.SetForegroundWindow(Hwnd);
                 break;
             case PInvoke.User32.WindowMessage.WM_RBUTTONUP:
                 await OpenNotifyMenuAsync();
@@ -83,31 +84,53 @@ public sealed partial class MainWindow : DesktopWindow
 
     private async Task OpenNotifyMenuAsync()
     {
-        var devices = await audioManager.GetAllDevicesAsync(AudioDeviceClass.Render);
         var menu = new WinMenu(Hwnd);
+        var playbackDevices = await audioManager.GetAllDevicesAsync(AudioDeviceClass.Render);
+        var recordingDevices = await audioManager.GetAllDevicesAsync(AudioDeviceClass.Capture);
+        var showDisabledDevices = audioSwitcher.ShowDisabledDevices;
 
-        foreach (var device in devices.Where(x => !audioManager.IsDisabled(x.Id)))
-        {
-            var isDefault = audioManager.IsDefault(device.Id, AudioDeviceClass.Render, AudioDeviceRoleType.Default);
-            var isDisabled = !audioManager.IsActive(device.Id);
-            async void Callback()
-            {
-                await audioSwitcher.ToggleAsync(AudioDeviceClass.Render, new[] { device.Id }, new NoNotificationService());
-            }
-
-            menu.Add(new(device.Name, Callback, isDefault, isDisabled));
-        }
+        var playbackCount = AddDevices(AudioDeviceClass.Render, playbackDevices);
+        if (playbackCount > 0 && HasVisibleDevices(recordingDevices))
+            menu.Add(null);
+        AddDevices(AudioDeviceClass.Capture, recordingDevices);
 
         if (!menu.IsEmpty)
             menu.Add(null);
-        menu.Add(new("&Settings", () =>
-        {
-            Restore();
-            NavView.SelectedItem = NavView.SettingsItem;
-        }));
-        menu.Add(new("&Open", () => Restore()));
         menu.Add(new("&Exit", () => Close()));
         menu.Track();
+
+        bool HasVisibleDevices(IEnumerable<AudioDevice> devices)
+        {
+            return devices.Any(ShouldShowDevice);
+        }
+
+        int AddDevices(AudioDeviceClass deviceClass, IEnumerable<AudioDevice> devices)
+        {
+            var count = 0;
+
+            foreach (var device in devices)
+            {
+                if (!ShouldShowDevice(device))
+                    continue;
+
+                var isDefault = audioManager.IsDefault(device.Id, deviceClass, AudioDeviceRoleType.Default);
+                var isDisabled = !audioManager.IsActive(device.Id);
+                async void Callback()
+                {
+                    await audioSwitcher.ToggleAsync(deviceClass, new[] { device.Id }, new NoNotificationService());
+                }
+
+                menu.Add(new(device.Name, Callback, isDefault, isDisabled));
+                ++count;
+            }
+
+            return count;
+        }
+
+        bool ShouldShowDevice(AudioDevice device)
+        {
+            return showDisabledDevices || audioManager.IsActive(device.Id);
+        }
     }
 
     private void NavView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
