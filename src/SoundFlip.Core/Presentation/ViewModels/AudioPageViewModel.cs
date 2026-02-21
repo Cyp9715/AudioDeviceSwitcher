@@ -144,7 +144,7 @@ public sealed partial class AudioPageViewModel : IDisposable
             if (newName == null)
                 return;
 
-            _audioSwitcher.RenameCommand(command.Name, newName.Trim());
+            _audioSwitcher.RenameCommand(command.Name, newName.Trim(), _deviceClass);
             command.Name = newName;
         }
         catch (Exception e)
@@ -162,7 +162,7 @@ public sealed partial class AudioPageViewModel : IDisposable
             if (command == null)
                 return;
 
-            _audioSwitcher.DeleteCommand(command.Name);
+            _audioSwitcher.DeleteCommand(command.Name, _deviceClass);
             var i = Commands.IndexOf(command);
             if (i != -1)
             {

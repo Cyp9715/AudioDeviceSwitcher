@@ -66,23 +66,23 @@ public sealed partial class AudioSwitcher
 
     public Command AddCommand(CommandName name, AudioDeviceClass deviceClass, Hotkey? hotkey = null, string[]? devices = null)
     {
-        EnsureNameIsAvailable(name);
+        EnsureNameIsAvailable(name, deviceClass);
         var command = new Command(name, deviceClass, hotkey, devices);
         state.Commands.Add(command);
         Save();
         return command;
     }
 
-    public void RenameCommand(CommandName name, CommandName newName)
+    public void RenameCommand(CommandName name, CommandName newName, AudioDeviceClass deviceClass)
     {
-        EnsureNameIsAvailable(newName);
-        var command = GetCommand(name);
+        EnsureNameIsAvailable(newName, deviceClass);
+        var command = GetCommand(name, deviceClass);
         SaveCommand(command with { Name = newName }, name);
     }
 
-    public void DeleteCommand(CommandName name)
+    public void DeleteCommand(CommandName name, AudioDeviceClass deviceClass)
     {
-        var command = GetCommand(name);
+        var command = GetCommand(name, deviceClass);
 
         if (Commands.Count(x => x.DeviceClass == command.DeviceClass) <= 1)
             throw new AudioSwitcherException("Command list cannot be left empty.");
@@ -136,7 +136,9 @@ public sealed partial class AudioSwitcher
     public void SaveCommand(Command command, string? name = null)
     {
         name ??= command.Name;
-        var index = state.Commands.FindIndex(x => x.Name == name);
+        var index = state.Commands.FindIndex(x =>
+            x.DeviceClass == command.DeviceClass
+            && string.Equals(x.Name, name, StringComparison.OrdinalIgnoreCase));
         if (index < 0)
             return;
 
@@ -203,21 +205,23 @@ public sealed partial class AudioSwitcher
         Save();
     }
 
-    private bool TryGetCommand(string name, [MaybeNullWhen(false)] out Command command)
+    private bool TryGetCommand(string name, AudioDeviceClass deviceClass, [MaybeNullWhen(false)] out Command command)
     {
-        command = Commands.FirstOrDefault(x => x.Name.ToLower() == name.ToLower());
+        command = Commands.FirstOrDefault(x =>
+            x.DeviceClass == deviceClass
+            && string.Equals(x.Name, name, StringComparison.OrdinalIgnoreCase));
         return command != null;
     }
 
-    private void EnsureNameIsAvailable(string name)
+    private void EnsureNameIsAvailable(string name, AudioDeviceClass deviceClass)
     {
-        if (TryGetCommand(name, out var _))
+        if (TryGetCommand(name, deviceClass, out var _))
             throw new AudioSwitcherException($"Name '{name}' is already in use.");
     }
 
-    private Command GetCommand(string name)
+    private Command GetCommand(string name, AudioDeviceClass deviceClass)
     {
-        if (!TryGetCommand(name, out var command))
+        if (!TryGetCommand(name, deviceClass, out var command))
             throw new AudioSwitcherException($"Command '{name}' doesn't exist.");
 
         return command;

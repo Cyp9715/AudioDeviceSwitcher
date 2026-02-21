@@ -85,10 +85,7 @@ public class DesktopWindow : Window
                     _shellIcon.Delete();
                     break;
                 case WindowMessage.WM_SHOWWINDOW:
-                    if (wParam == IntPtr.Zero)
-                        _shellIcon.Create();
-                    else
-                        _shellIcon.Delete();
+                    _shellIcon.Create();
                     break;
                 case WinShellNotifyIcon.NotifyIconCallbackId:
                     OnShellNotifyIconMessage((WindowMessage)(short)lParam);
