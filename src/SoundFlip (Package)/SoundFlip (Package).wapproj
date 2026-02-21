@@ -46,14 +46,14 @@
     <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
     <HoursBetweenUpdateChecks>24</HoursBetweenUpdateChecks>
     <AppxSymbolPackageEnabled>True</AppxSymbolPackageEnabled>
-    <AppxPackageSigningEnabled>False</AppxPackageSigningEnabled>
+    <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
     <AppxPackageIncludePrivateSymbols>True</AppxPackageIncludePrivateSymbols>
     <AppxBundlePlatforms>x64|arm64</AppxBundlePlatforms>
-    <PackageCertificateKeyFile>..\..\SoundFlip.pfx</PackageCertificateKeyFile>
     <AppxPackageDir>..\..\AppPackages</AppxPackageDir>
     <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
-    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
     <GenerateTestArtifacts>True</GenerateTestArtifacts>
+    <PackageCertificateThumbprint>E1FD536A283AFEDBE6096A9B2F79CD11687192EC</PackageCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
     <AppxBundle>Always</AppxBundle>
@@ -84,6 +84,7 @@
     <Content Include="Images\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="Images\SoundFlipSource.png" />
     <Content Include="Images\StoreLogo.png" />
+    <None Include="SoundFlip %28Package%29_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SoundFlip\SoundFlip.csproj">
