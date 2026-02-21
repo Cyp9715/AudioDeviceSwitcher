@@ -24,7 +24,9 @@ internal sealed class WinMenu
 
     public void Track()
     {
+        var previousForegroundWindow = PUser32.GetForegroundWindow();
         var menu = User32.CreatePopupMenu();
+        PUser32.SetForegroundWindow(hwnd);
 
         for (var i = 0; i < options.Count; ++i)
         {
@@ -45,6 +47,10 @@ internal sealed class WinMenu
         PUser32.GetCursorPos(out var point);
         var index = User32.TrackPopupMenuEx(menu, User32.TPM_RIGHTALIGN | User32.TPM_RETURNCMD, point.x, point.y, hwnd, default) - 1;
         User32.DestroyMenu(menu);
+        PUser32.PostMessage(hwnd, PUser32.WindowMessage.WM_NULL, IntPtr.Zero, IntPtr.Zero);
+
+        if (previousForegroundWindow != IntPtr.Zero && previousForegroundWindow != hwnd)
+            PUser32.SetForegroundWindow(previousForegroundWindow);
 
         if (index >= 0 && index < options.Count)
             options[index]?.Callback.Invoke();
