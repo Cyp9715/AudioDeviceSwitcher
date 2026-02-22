@@ -9,7 +9,7 @@ if (!$platform) {
 }
 
 $root = $PSScriptRoot
-$projectName = 'SoundFlip'
+$projectName = 'AudioFlip'
 $solutionPath = "$root/$projectName.slnx"
 $package_dir = "$root/src/$projectName (Package)"
 $certificatePath = "$root/$projectName.pfx"
@@ -63,13 +63,13 @@ function Restore {
 }
 
 function Test {
-	dotnet test test/SoundFlip.Tests.csproj  -v:m -nologo -p:Configuration=$configuration -p:Platform=$platform
+	dotnet test test/AudioFlip.Tests.csproj  -v:m -nologo -p:Configuration=$configuration -p:Platform=$platform
 }
 
 function Coverage {
 	$dir = "$root/TestResults"
 	Remove-Item $dir -Force -Recurse -ErrorAction SilentlyContinue
-	dotnet test test/SoundFlip.Tests.csproj  -v:m -nologo -p:Configuration=$configuration -p:Platform=$platform --collect "XPlat Code Coverage" -r $dir --settings coverage.runsettings
+	dotnet test test/AudioFlip.Tests.csproj  -v:m -nologo -p:Configuration=$configuration -p:Platform=$platform --collect "XPlat Code Coverage" -r $dir --settings coverage.runsettings
 	$result = (Get-Item TestResults/**/*.xml).FullName
 	reportgenerator -reports:$result -targetdir:$dir -reporttypes html
 	Start-Process "$dir/index.html"
