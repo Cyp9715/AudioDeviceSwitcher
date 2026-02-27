@@ -37,19 +37,19 @@ public sealed class AudioSwitcherToggler
 
             if (!audioManager.GetState(deviceId).HasFlag(AudioDeviceState.Active))
             {
-                skipped.Add($"?? Skipped '{deviceName}' because it is {audioManager.GetState(deviceId).ToString().ToLower()}.");
+                skipped.Add($"⚠️ Skipped '{deviceName}' because it is {audioManager.GetState(deviceId).ToString().ToLower()}.");
                 continue;
             }
 
             if (!audioManager.SetDefaultDevice(deviceId, AudioDeviceRoleType.Default))
             {
-                skipped.Add($"?? Skipped '{deviceName}' because it may not exist.");
+                skipped.Add($"⚠️ Skipped '{deviceName}' because it may not exist.");
                 continue;
             }
 
             if (audioManager.GetDefaultAudioId(deviceClass, AudioDeviceRoleType.Default) != deviceId)
             {
-                skipped.Add($"?? Skipped '{deviceName}' because it may be disconnected.");
+                skipped.Add($"⚠️ Skipped '{deviceName}' because it may be disconnected.");
                 continue;
             }
 
@@ -58,7 +58,7 @@ public sealed class AudioSwitcherToggler
 
             if (deviceId != defaultAudioDevice || skipped.Count <= 0)
             {
-                await notificationService.ShowNotificationAsync($"?? {deviceName}");
+                await notificationService.ShowNotificationAsync($"✔️ {deviceName}");
                 return;
             }
 
